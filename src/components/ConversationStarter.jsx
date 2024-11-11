@@ -1,17 +1,18 @@
 import { getFact } from "../api/getFact"
-// import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const ConversationStarter = () => {
-	// const [fact, setFact] = useState("")
+	const [starter, setStareter] = useState(null)
 
-	const getConvoStarter = async () => {
-		const fact = await getFact();
-		console.log(fact)
-	};
+	useEffect(() => {
+		const getConvoStarter = async () => {
+			const fact = await getFact();
+			setStareter(fact);
+		};
+		getConvoStarter();
+	}, []);
 
-	getConvoStarter();
-	
 	return (
-		<p>hej</p>
+		<p>{starter}</p>
 	)
 }
