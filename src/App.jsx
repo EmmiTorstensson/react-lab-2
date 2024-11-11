@@ -13,12 +13,16 @@ function App() {
 		<div>
 			<button>Hit me!</button>
 			<p>Klicka på knappen för att få en riktigt bra snackstartare att bryta isen med</p>
+		</div>
+		<div>
 			<ConversationStarter />
 		</div>
 		<div>
-			<p>Här är ett roligt ämne framslumpat från ett api</p>
-			<button>Spara som favorit</button>
-			<button>Ge mig en ny!</button>
+			<p>Favoriter</p>
+			<ul>
+				<li>Fovorit 1 <button>Ta bort</button></li>
+				<li>Fovorit 2 <button>Ta bort</button></li>
+			</ul>
 		</div>
     </>
   )
