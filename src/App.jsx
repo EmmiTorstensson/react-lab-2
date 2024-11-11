@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { ConversationStarter } from './components/ConversationStarter'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +13,7 @@ function App() {
 		<div>
 			<button>Hit me!</button>
 			<p>Klicka på knappen för att få en riktigt bra snackstartare att bryta isen med</p>
+			<ConversationStarter />
 		</div>
 		<div>
 			<p>Här är ett roligt ämne framslumpat från ett api</p>
