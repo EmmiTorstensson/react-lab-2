@@ -1,6 +1,7 @@
 import { getFact } from "../api/getFact"
 import { getJoke } from "../api/getJoke"
 import { useEffect, useState } from "react"
+import { Settings } from "./Settings"
 import { Favorites } from "./Favorites"
 
 export const ConversationStarter = () => {
@@ -15,7 +16,6 @@ export const ConversationStarter = () => {
 	
 	const getJokeStarter = async () => {
 		const joke = await getJoke();
-		console.log(joke)
 		setStarterJoke(joke)
 	};
 
@@ -34,6 +34,9 @@ export const ConversationStarter = () => {
 
 	return (
 		<>	
+			<div>
+				<Settings />
+			</div>
 			<div>	
 				<p>{starterFact}</p>
 				<button onClick={() => saveAsFavorites(starterFact)}>Spara som favorit</button>
@@ -42,6 +45,7 @@ export const ConversationStarter = () => {
 			<div>
 				<Favorites favorites={favorites} deleteFavorite={deleteFavorite} />
 			</div>
+			<div>{starterJoke}</div>
 		</>
 	)
 }
