@@ -19,6 +19,10 @@ export const ConversationStarter = () => {
 		setFavorites(prevFavorites => [...prevFavorites, fav]);
 	};
 
+	const deleteFavorite = (indexDelete) => {
+		setFavorites(prevFavorites => prevFavorites.filter((_, index) => index !== indexDelete));
+	}
+
 	return (
 		<>	
 			<div>	
@@ -27,7 +31,7 @@ export const ConversationStarter = () => {
 				<button onClick={getConvoStarter}>Ge mig en ny!</button>
 			</div>
 			<div>
-				<Favorites favorites={favorites} />
+				<Favorites favorites={favorites} deleteFavorite={deleteFavorite} />
 			</div>
 		</>
 	)
