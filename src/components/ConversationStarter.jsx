@@ -1,6 +1,6 @@
 import { getFact } from "../api/getFact"
 import { getJoke } from "../api/getJoke"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 import { Settings } from "./Settings"
 import { Favorites } from "./Favorites"
 import { useSettings } from "../context/settingContext"
@@ -10,7 +10,7 @@ export const ConversationStarter = () => {
 	const [favorites, setFavorites] = useState([]);
 	const { settings } = useSettings();
 
-	const getData = async () => {
+	const getData = useCallback(async () => {
 		const [fact, joke] = await Promise.all([getFact(), getJoke()])
 
 		if( settings === "fact" ) {
@@ -20,11 +20,11 @@ export const ConversationStarter = () => {
 		} else {
 			setRandomStarter(Math.random() < 0.5 ? fact : joke);
 		}
-	}
+	}, [settings])
 
 	useEffect(() => {
 		getData();
-	}, []);
+	}, [getData]);
 
 	const saveAsFavorites = (fav) => {
 		setFavorites(prevFavorites => [...prevFavorites, fav]);
@@ -41,8 +41,8 @@ export const ConversationStarter = () => {
 			</div>
 			<div>	
 				<p>{randomStarter}</p>
-				<button onClick={() => saveAsFavorites(randomStarter)}>Spara som favorit</button>
-				<button onClick={getData}>Ge mig en ny!</button>
+				<button onClick={() => saveAsFavorites(randomStarter)}>Save as favorite</button>
+				<button onClick={getData}>Try again</button>
 			</div>
 			<div>
 				<Favorites favorites={favorites} deleteFavorite={deleteFavorite} />

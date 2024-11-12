@@ -8,11 +8,11 @@ function App() {
 
 	<SettingsProvider>
 		<div>
-       		<h1>Välkommen till Snackstartaren!</h1>
+       		<h1>Welcome to the conversation starter!</h1>
 		</div>
 		<div>
 			<button>Hit me!</button>
-			<p>Klicka på knappen för att få en riktigt bra snackstartare att bryta isen med</p>
+			<p>Click on the button to get the conversation started</p>
 		</div>
 		<div>
 			<ConversationStarter />
