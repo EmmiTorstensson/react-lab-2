@@ -1,9 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import { ConversationStarter } from './components/ConversationStarter'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -16,13 +14,6 @@ function App() {
 		</div>
 		<div>
 			<ConversationStarter />
-		</div>
-		<div>
-			<p>Favoriter</p>
-			<ul>
-				<li>Fovorit 1 <button>Ta bort</button></li>
-				<li>Fovorit 2 <button>Ta bort</button></li>
-			</ul>
 		</div>
     </>
   )
