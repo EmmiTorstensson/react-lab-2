@@ -1,10 +1,12 @@
 import './App.css'
 import { ConversationStarter } from './components/ConversationStarter'
+import { SettingsProvider } from './context/settingContext'
 
 function App() {
 
   return (
-    <>
+
+	<SettingsProvider>
 		<div>
        		<h1>Välkommen till Snackstartaren!</h1>
 		</div>
@@ -15,7 +17,7 @@ function App() {
 		<div>
 			<ConversationStarter />
 		</div>
-    </>
+	</SettingsProvider>
   )
 }
 

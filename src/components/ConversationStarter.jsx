@@ -3,17 +3,23 @@ import { getJoke } from "../api/getJoke"
 import { useEffect, useState } from "react"
 import { Settings } from "./Settings"
 import { Favorites } from "./Favorites"
+import { useSettings } from "../context/settingContext"
 
 export const ConversationStarter = () => {
 	const [randomStarter, setRandomStarter] = useState(null);
 	const [favorites, setFavorites] = useState([]);
+	const { settings } = useSettings();
 
 	const getData = async () => {
 		const [fact, joke] = await Promise.all([getFact(), getJoke()])
 
-		const randomStarter = Math.random() < 0.5 ? fact : joke;
-		console.log(randomStarter)
-		setRandomStarter(randomStarter)
+		if( settings === "fact" ) {
+			setRandomStarter(fact)
+		} else if ( settings === "joke" ) {
+			setRandomStarter(joke)
+		} else {
+			setRandomStarter(Math.random() < 0.5 ? fact : joke);
+		}
 	}
 
 	useEffect(() => {
