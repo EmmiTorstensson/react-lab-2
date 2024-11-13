@@ -9,9 +9,6 @@ function App() {
 	<SettingsProvider>
 		<div>
        		<h1>Welcome to the conversation starter!</h1>
-		</div>
-		<div>
-			<button>Hit me!</button>
 			<p>Click on the button to get the conversation started</p>
 		</div>
 		<div>

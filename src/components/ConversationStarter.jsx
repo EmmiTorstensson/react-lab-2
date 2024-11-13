@@ -5,6 +5,7 @@ import { useSettings } from "../context/settingContext"
 import { Settings } from "./Settings"
 import { Favorites } from "./Favorites"
 import { History } from "./History"
+import { StarterDisplay } from "./StarterDisplay"
 
 const initialState = {
 	randomStarter: null,
@@ -31,9 +32,7 @@ function reducer(state, action) {
 }
 
 export const ConversationStarter = () => {
-	// const [randomStarter, setRandomStarter] = useState(null);
 	const [favorites, setFavorites] = useState([]);
-	// const [history, setHistory] = useState([]);
 	const { settings } = useSettings();
 	const [state, dispatch] = useReducer(reducer, initialState)
 
@@ -63,15 +62,12 @@ export const ConversationStarter = () => {
 				<Settings />
 			</div>
 			<div>	
-				<p>{state.randomStarter}</p>
-				<button onClick={() => saveAsFavorites(randomStarter)}>Save as favorite</button>
-				<button onClick={getData}>Try again</button>
+				<StarterDisplay saveAsFavorites={saveAsFavorites} getData={getData} randomStarter={state.randomStarter} />
 			</div>
 			<div>
 				<Favorites favorites={favorites} deleteFavorite={deleteFavorite} />
 			</div>
 			<History history={state.history}/>
-			{/* <div>{starterJoke}</div> */}
 		</>
 	)
 }
