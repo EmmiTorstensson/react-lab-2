@@ -58,16 +58,14 @@ export const ConversationStarter = () => {
 
 	return (
 		<>	
-			<div>
-				<Settings />
-			</div>
-			<div>	
-				<StarterDisplay saveAsFavorites={saveAsFavorites} getData={getData} randomStarter={state.randomStarter} />
-			</div>
-			<div>
+			<Settings />
+			<StarterDisplay saveAsFavorites={saveAsFavorites} getData={getData} randomStarter={state.randomStarter} />
+			{favorites.length > 0 && (
 				<Favorites favorites={favorites} deleteFavorite={deleteFavorite} />
-			</div>
-			<History history={state.history}/>
+			)}
+			{state.history.length > 0 && (
+				<History history={state.history}/>
+			)}
 		</>
 	)
 }

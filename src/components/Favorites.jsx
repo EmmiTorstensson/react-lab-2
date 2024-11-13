@@ -1,5 +1,8 @@
 import { useMemo } from "react"
 import styled from "styled-components"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons'; // Import the "x" icon
+
 
 const Wrapper = styled.div `
 	margin: 50px 0;
@@ -8,26 +11,37 @@ const Wrapper = styled.div `
 	padding: 20px;
 	color: #ffffff;
 `;
+const List = styled.ul `
+	padding: 0;
+`;
 
 const StyledListItem = styled.li `
 	list-style: none;
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	justify-content: space-between;
-	flex-direction: row;
-	text-align: center;
-	flex-grow: 1;
 
 	+ li {
-		margin-top: 10px;
+		padding-top: 10px;
+		position: relative;
+	
 	}
 `;
 
 const Button = styled.button `
-	padding: 4px 8px;
-	white-space: nowrap;
+	background-color: #88472b;
+	border-radius: 100%;
+	height: 20px;
+	width: 20px;
+	border: none;
+	font-size: 8px;
+	margin-left: 10px;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	cursor: pointer;
+	transition: background-color .2s ease;
 
+	&:hover {
+		background-color: #4e2919;
+	}
 `;
 
 export const Favorites = ({ favorites, deleteFavorite }) => {
@@ -37,12 +51,17 @@ export const Favorites = ({ favorites, deleteFavorite }) => {
 
 	return (
 		<Wrapper>
-			<h2>Favoriter</h2>	
-			<ul>
+			<h2>Favorites</h2>	
+			<List>
 				{sortedFavorites.map((favorite, index) => (
-					<StyledListItem key={index}>{favorite}<Button onClick={() => deleteFavorite(index)}>Ta bort</Button></StyledListItem>	
+					<StyledListItem key={index}>
+						<span>
+							{favorite}
+							<Button onClick={() => deleteFavorite(index)}><FontAwesomeIcon icon={faX} /></Button>
+						</span>
+					</StyledListItem>	
 				))}
-			</ul>
+			</List>
 		</Wrapper>
 	)
 }

@@ -8,12 +8,27 @@ const Wrapper = styled.div `
 	padding: 30px;
 `;
 
+
 const P = styled.p `
 	padding: 0;
-	margin: 0 0 15px;
+	margin: 15px;
+	font-size: 20px;
+	margin-top: 0;
+	margin-bottom: 25px;
+	font-weight: 700;
+`;
+const ButtonWrapper = styled.div `
+	display: flex;
+	gap: 10px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+  }
+
 `;
 
 const Button = styled.button `
+	flex-grow: 1;
 	border-radius: 8px;
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;
@@ -33,10 +48,6 @@ const Button = styled.button `
 	&:active {
 		background-color: #4e7653;
 	}
-
-	+ button {
-		margin-left: 10px;
-	}
   `
 
 
@@ -45,8 +56,10 @@ export const StarterDisplay = ({randomStarter, saveAsFavorites, getData}) => {
 	return (
 		<Wrapper>	
 			<P>{randomStarter}</P>
-			<Button onClick={getData}>New one!</Button>
-			<Button onClick={() => saveAsFavorites(randomStarter)}>Save as favorite</Button>
+			<ButtonWrapper>
+				<Button onClick={getData}>New one</Button>
+				<Button onClick={() => saveAsFavorites(randomStarter)}>Save as favorite</Button>
+			</ButtonWrapper>
 		</Wrapper>
 	)
 }
